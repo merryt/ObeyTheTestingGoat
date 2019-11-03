@@ -35,7 +35,7 @@ class NewVisitorTest(unittest.TestCase):
             any(row.text == '1: Buy peacock feathers' for row in rows),
             "New to-do item did not appear in table"
         )
-        self.fail("current loc 1352")
+        self.fail("current loc 1353")
         self.fail("finish the test?")
 
 if __name__ == '__main__':

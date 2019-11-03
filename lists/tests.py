@@ -15,9 +15,13 @@ class HomePageTest(TestCase):
 
     def test_uses_home_template(self):
         response = self.client.get('/')
+        # assert template used is a cool way to verify the template you are using
+        # wonder how it works with inharitance
         self.assertTemplateUsed(response, 'home.html')
 
-
+    def test_can_save_a_POST_request(self):
+        response = self.client('/', data={'item_text': 'A new list item'})
+        self.assertIn('A new list item', response.content.decode())
 
     def test_home_page_returns_correct_html(self):
         response = self.client.get('/')
