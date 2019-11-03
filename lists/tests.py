@@ -20,8 +20,9 @@ class HomePageTest(TestCase):
         self.assertTemplateUsed(response, 'home.html')
 
     def test_can_save_a_POST_request(self):
-        response = self.client('/', data={'item_text': 'A new list item'})
-        self.assertIn('A new list item', response.content.decode())
+        response = self.client.post('/', data={'item_text': 'A new list item'})
+        self.assertIn('A new list item', response.content.decode(), "We aren't seeing the item we just added")
+        self.assertTemplateUsed(response, 'home.html')
 
     def test_home_page_returns_correct_html(self):
         response = self.client.get('/')
